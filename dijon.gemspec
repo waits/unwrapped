@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.description = "For those times when jQuery is too much."
   s.license     = "MIT"
 
-  s.files = Dir["{app,config,db,lib}/**/*", "LICENSE", "Rakefile", "README.md"]
+  s.files = Dir["{app,config,db,lib}/**/*", "LICENSE", "Rakefile", "README.md", "vendor/assets/javascripts/*"]
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 4.2"

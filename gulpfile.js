@@ -16,7 +16,7 @@ gulp.task('default', function() {
     .pipe(jshint.reporter('default'))
     .pipe(concat('dijon.js'))
     .pipe(insert.prepend(comment))
-    .pipe(gulp.dest('lib/assets/javascripts'));
+    .pipe(gulp.dest('vendor/assets/javascripts'));
 /*
     .pipe(rename({suffix: '.min'}))
     .pipe(uglify())
