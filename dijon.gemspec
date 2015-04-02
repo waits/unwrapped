@@ -8,16 +8,14 @@ Gem::Specification.new do |s|
   s.name        = "dijon"
   s.version     = Dijon::VERSION
   s.authors     = ["Dylan Waits"]
-  s.email       = ["pianoman320@me.com"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Dijon."
-  s.description = "TODO: Description of Dijon."
+  s.email       = ["dylan@waits.io"]
+  s.homepage    = "https://github.com/waits/dijon"
+  s.summary     = "Simple performance-focused Javascript DOM extensions and utilities."
+  s.description = "For those times when jQuery is too much."
   s.license     = "MIT"
 
-  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["{app,config,db,lib}/**/*", "LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "rails", "~> 4.2.1"
-
-  s.add_development_dependency "sqlite3"
+  s.add_dependency "rails", "~> 4.2"
 end
