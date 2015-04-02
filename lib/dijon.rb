@@ -1,2 +1,1 @@
-module Dijon
-end
+require 'dijon/rails'

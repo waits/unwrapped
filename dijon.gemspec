@@ -1,12 +1,12 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 # Maintain your gem's version:
-require "dijon/version"
+require "dijon/rails/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
   s.name        = "dijon"
-  s.version     = Dijon::VERSION
+  s.version     = Dijon::Rails::VERSION
   s.authors     = ["Dylan Waits"]
   s.email       = ["dylan@waits.io"]
   s.homepage    = "https://github.com/waits/dijon"
