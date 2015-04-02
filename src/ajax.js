@@ -1,16 +1,22 @@
 function ajax(method, url, data, callback) {
+	method = method.toUpperCase();
 	var request = new XMLHttpRequest();
-	var fdata = '';
-	if (data) 
-		for (var p in data) fdata += p + '=' + encodeURIComponent(data[p]) + '&';
-	if (method == 'get') {
-		url += '?' + fdata;
-		fdata = null;
+	if (data) {
+		if (method == 'get' && data) {
+			url += '?';
+			for (var p in data) url += p + '=' + encodeURIComponent(data[p]) + '&';
+		}
+		else {
+			data = JSON.stringify(data);
+		}
 	}
 	request.open(method, url, true);
-	request.onload = function() {callback.call(this);};
-	request.onerror = function() {};
-	if (method != 'get' && method != 'delete')
-		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
-	request.send(fdata);
+	if (callback) request.onload = function() {callback.call(this);};
+	if (method == 'get' || method == 'delete' || !data) {
+		request.send();
+	}
+	else {
+		request.setRequestHeader("Content-Type", "application/json");
+		request.send(data);
+	}
 }

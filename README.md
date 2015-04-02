@@ -4,11 +4,11 @@ dijon.js
 Simple performance-focused Javascript DOM extensions and utilities. For those times when jQuery is too much.
 
 ### Browser Support
-Chrome 38+  
-Firefox 33+  
-Internet Explorer 10+  
-Opera 25+  
-Safari 8+  
+Chrome 38+
+Firefox 33+
+Internet Explorer 11+
+Opera 25+
+Safari 8+
 
 ### Helper Functions
 ```javascript
@@ -35,4 +35,9 @@ Element.next() // returns next sibling or null
 Element.prev() // returns previous sibling or null
 Element.siblings() // returns NodeList of siblings excluding self
 Element.index() // returns index of element in its parent container
+```
+
+### AJAX Functions
+```javascript
+ajax(method, url, data, callback) // sends an XMLHttpRequest with the data urlencoded for GET requests or serialized into JSON otherwise
 ```
