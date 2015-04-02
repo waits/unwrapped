@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     dijon (0.0.1)
-      rails (~> 4.2.1)
+      rails (~> 4.2)
 
 GEM
   remote: https://rubygems.org/
