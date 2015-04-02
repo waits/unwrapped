@@ -1,0 +1,9 @@
+{
+	"boss": true,
+	"browser": true,
+	"devel": true,
+	"typed": true,
+  "undef": true,
+  "unused": false,
+  "predef": [ "HTMLCollection" ]
+}

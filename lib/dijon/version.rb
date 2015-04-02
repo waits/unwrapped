@@ -1,0 +1,3 @@
+module Dijon
+  VERSION = "0.0.1"
+end
