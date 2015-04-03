@@ -13,6 +13,10 @@ Element.prototype.getClass = function(name) {
 	return this.getElementsByClassName(name);
 };
 
+Element.prototype.getName = function(name) {
+	return this.getElementsByName(name);
+};
+
 Element.prototype.getTag = function(name) {
 	return this.getElementsByTagName(name);
 };

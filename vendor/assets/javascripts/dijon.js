@@ -4,7 +4,7 @@ function ajax(method, url, data, callback) {
 	method = method.toUpperCase();
 	var request = new XMLHttpRequest();
 	if (data) {
-		if (method == 'get' && data) {
+		if (method == 'GET' && data) {
 			url += '?';
 			for (var p in data) url += p + '=' + encodeURIComponent(data[p]) + '&';
 		}
@@ -14,7 +14,7 @@ function ajax(method, url, data, callback) {
 	}
 	request.open(method, url, true);
 	if (callback) request.onload = function() {callback.call(this);};
-	if (method == 'get' || method == 'delete' || !data) {
+	if (method == 'GET' || method == 'DELETE' || !data) {
 		request.send();
 	}
 	else {
@@ -35,6 +35,10 @@ Document.prototype.ready = function(callback) {
 
 Element.prototype.getClass = function(name) {
 	return this.getElementsByClassName(name);
+};
+
+Element.prototype.getName = function(name) {
+	return this.getElementsByName(name);
 };
 
 Element.prototype.getTag = function(name) {

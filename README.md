@@ -14,6 +14,7 @@ Safari 8+
 ```javascript
 get(id) // returns Element
 getClass(name) // returns NodeList
+getName(name) // returns NodeList
 getTag(name) // returns NodeList
 is(object) // returns shortened class name
 ```
