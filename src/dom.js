@@ -33,7 +33,7 @@ HTMLCollection.prototype.on = NodeList.prototype.on = function(event, callback) 
 		if (node.nodeType == 1) {
 			node.on(event, callback);
 		}
-	}	
+	}
 };
 
 HTMLCollection.prototype.each = NodeList.prototype.each = function(callback) {

@@ -1,4 +1,4 @@
-/* dijon.js ~ created by Dylan Waits ~ https://github.com/waits/dijon ~ updated 2015-04-2 */
+/*! dijon.js ~ created by Dylan Waits ~ https://github.com/waits/dijon ~ updated 2015-04-10 */
 
 function ajax(method, url, data, callback) {
 	method = method.toUpperCase();
@@ -57,7 +57,7 @@ HTMLCollection.prototype.on = NodeList.prototype.on = function(event, callback) 
 		if (node.nodeType == 1) {
 			node.on(event, callback);
 		}
-	}	
+	}
 };
 
 HTMLCollection.prototype.each = NodeList.prototype.each = function(callback) {

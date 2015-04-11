@@ -8,7 +8,7 @@ var gulp = require('gulp'),
 	
 var d = new Date();
 var date = d.getFullYear() + '-' + (d.getMonth() < 9 ? '0' + (d.getMonth() + 1) : d.getMonth() + 1) + '-' + d.getDate();
-var comment = "/* dijon.js ~ created by Dylan Waits ~ https://github.com/waits/dijon ~ updated " + date + " */\n\n";
+var comment = "/*! dijon.js ~ created by Dylan Waits ~ https://github.com/waits/dijon ~ updated " + date + " */\n\n";
 
 gulp.task('default', function() {
   return gulp.src('src/*.js')
@@ -16,10 +16,8 @@ gulp.task('default', function() {
     .pipe(jshint.reporter('default'))
     .pipe(concat('dijon.js'))
     .pipe(insert.prepend(comment))
-    .pipe(gulp.dest('vendor/assets/javascripts'));
-/*
+    .pipe(gulp.dest('vendor/assets/javascripts'))
     .pipe(rename({suffix: '.min'}))
-    .pipe(uglify())
-    .pipe(gulp.dest('demo'));
-*/
+    .pipe(uglify({preserveComments: 'some'}))
+    .pipe(gulp.dest(''));
 });
