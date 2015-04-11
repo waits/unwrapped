@@ -27,6 +27,30 @@ function getClass(name) {return document.getElementsByClassName(name);}
 function getName(name) {return document.getElementsByName(name);}
 function getTag(name) {return document.getElementsByTagName(name);}
 
+function create(type, textContent, options) {
+	var el = document.createElement(type);
+	
+	for (var k in options) {
+		if (k == 'style' || k == 'data') {
+			if (k == 'data') {
+				k = 'dataset';
+				options.dataset = options.data;
+			}
+			for (var j in options[k]) {
+				el[k][j] = options[k][j];
+			}
+		}
+		else {
+			el[k] = options[k];
+		}
+	}
+	
+	var text = document.createTextNode(textContent);
+	el.appendChild(text);
+	
+	return el;
+}
+
 Document.prototype.ready = function(callback) {
 	callback(this);
 	document.addEventListener('load', callback);

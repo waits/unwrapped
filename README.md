@@ -12,6 +12,7 @@ Safari 8+
 
 ### Helper Functions
 ```javascript
+create(type[, content, attributes]) // creates an element of the given type, optionally with text content and provided attributes
 get(id) // returns Element
 getClass(name) // returns NodeList
 getName(name) // returns NodeList
