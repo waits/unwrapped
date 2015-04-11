@@ -30,23 +30,27 @@ function getTag(name) {return document.getElementsByTagName(name);}
 function create(type, textContent, options) {
 	var el = document.createElement(type);
 	
-	for (var k in options) {
-		if (k == 'style' || k == 'data') {
-			if (k == 'data') {
-				k = 'dataset';
-				options.dataset = options.data;
+	if (options) {
+		for (var k in options) {
+			if (k == 'style' || k == 'data') {
+				if (k == 'data') {
+					k = 'dataset';
+					options.dataset = options.data;
+				}
+				for (var j in options[k]) {
+					el[k][j] = options[k][j];
+				}
 			}
-			for (var j in options[k]) {
-				el[k][j] = options[k][j];
+			else {
+				el[k] = options[k];
 			}
-		}
-		else {
-			el[k] = options[k];
 		}
 	}
 	
-	var text = document.createTextNode(textContent);
-	el.appendChild(text);
+	if (textContent) {
+		var text = document.createTextNode(textContent);
+		el.appendChild(text);
+	}
 	
 	return el;
 }
