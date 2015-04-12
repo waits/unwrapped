@@ -1,9 +1,10 @@
 {
-	"boss": true,
-	"browser": true,
-	"devel": true,
-	"typed": true,
+  "boss": true,
+  "browser": true,
+  "devel": true,
+  "typed": true,
   "undef": true,
   "unused": false,
-  "predef": [ "HTMLCollection" ]
+  "predef": [ "HTMLCollection" ],
+  "-W086": true //allow fall-through
 }

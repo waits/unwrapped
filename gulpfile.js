@@ -12,9 +12,9 @@ var comment = "/*! dijon.js ~ created by Dylan Waits ~ https://github.com/waits/
 
 gulp.task('default', function() {
   return gulp.src('src/*.js')
+    .pipe(concat('dijon.js'))
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
-    .pipe(concat('dijon.js'))
     .pipe(insert.prepend(comment))
     .pipe(gulp.dest('vendor/assets/javascripts'))
     .pipe(rename({suffix: '.min'}))

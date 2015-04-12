@@ -1,4 +1,4 @@
-/*! dijon.js ~ created by Dylan Waits ~ https://github.com/waits/dijon ~ updated 2015-04-10 */
+/*! dijon.js ~ created by Dylan Waits ~ https://github.com/waits/dijon ~ updated 2015-04-11 */
 
 function ajax(method, url, data, callback) {
 	method = method.toUpperCase();
@@ -22,23 +22,27 @@ function ajax(method, url, data, callback) {
 		request.send(data);
 	}
 }
+function is(object) {
+	return Object.prototype.toString.call(object).slice(8, -1);
+}
 function get(id) {return document.getElementById(id) || document.createDocumentFragment().childNodes;}
 function getClass(name) {return document.getElementsByClassName(name);}
 function getName(name) {return document.getElementsByName(name);}
 function getTag(name) {return document.getElementsByTagName(name);}
 
-function create(type, textContent, options) {
+function create(type, child, options) {
 	var el = document.createElement(type);
 	
 	if (options) {
 		for (var k in options) {
-			if (k == 'style' || k == 'data') {
-				if (k == 'data') {
-					k = 'dataset';
-					options.dataset = options.data;
+			if (k == 'style') {
+				for (var s in options.style) {
+					el.style[s] = options.style[s];
 				}
-				for (var j in options[k]) {
-					el[k][j] = options[k][j];
+			}
+			else if (k == 'data') {
+				for (var d in options.data) {
+					el.dataset[d] = options.data[d];
 				}
 			}
 			else {
@@ -47,9 +51,20 @@ function create(type, textContent, options) {
 		}
 	}
 	
-	if (textContent) {
-		var text = document.createTextNode(textContent);
-		el.appendChild(text);
+	switch (is(child)) {
+		case "Null":
+		case "Undefined":
+			break;
+		case "String":
+			el.appendChild(document.createTextNode(child));
+			break;
+		case "NodeList":
+			child = Array.prototype.slice.call(child);
+		case "Array":
+			for (var c in child) el.appendChild(child[c]);
+			break;
+		default:
+			el.appendChild(child);
 	}
 	
 	return el;
@@ -129,6 +144,3 @@ Element.prototype.siblings = function() {
 Element.prototype.index = function() {
 	return [].slice.call(this.parentNode.children).indexOf(this);
 };
-function is(object) {
-	return Object.prototype.toString.call(object).replace(/^\[object (.+)\]$/, "$1");
-}
