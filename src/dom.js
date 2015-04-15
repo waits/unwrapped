@@ -78,7 +78,7 @@ HTMLCollection.prototype.on = NodeList.prototype.on = function(event, callback) 
 
 HTMLCollection.prototype.each = NodeList.prototype.each = function(callback) {
 	Array.prototype.forEach.call(this, function(el, i) {
-		callback(el);
+		callback.call(el, i);
 	});
 };
 
