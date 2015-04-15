@@ -12,7 +12,7 @@ function ajax(method, url, data, callback) {
 	}
 	request.open(method, url, true);
 	if (callback) request.onload = function() {callback.call(this);};
-	if (method == 'GET' || method == 'DELETE' || !data) {
+	if (method == 'GET' || !data) {
 		request.send();
 	}
 	else {
