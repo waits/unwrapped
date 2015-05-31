@@ -6,17 +6,16 @@ var gulp = require('gulp'),
 		insert = require('gulp-insert'),
 		del = require('del');
 	
-var d = new Date();
-var date = d.getFullYear() + '-' + (d.getMonth() < 9 ? '0' + (d.getMonth() + 1) : d.getMonth() + 1) + '-' + d.getDate();
-var comment = "/*! dijon.js ~ created by Dylan Waits ~ https://github.com/waits/dijon ~ updated " + date + " */\n\n";
+var version = 'v' + require('./package.json').version;
+var comment = "/*! unwrapped.js ~ " + version + " ~ created by Dylan Waits ~ https://github.com/waits/unwrapped */\n\n";
 
 gulp.task('default', function() {
   return gulp.src('src/*.js')
-    .pipe(concat('dijon.js'))
+    .pipe(concat('unwrapped.js'))
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
     .pipe(insert.prepend(comment))
-    .pipe(gulp.dest('vendor/assets/javascripts'))
+    .pipe(gulp.dest(''))
     .pipe(rename({suffix: '.min'}))
     .pipe(uglify({preserveComments: 'some'}))
     .pipe(gulp.dest(''));

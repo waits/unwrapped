@@ -1,4 +1,4 @@
-dijon.js
+unwrapped.js
 ======
 
 Simple performance-focused Javascript DOM extensions and utilities. For those times when jQuery is too much.

@@ -1,4 +1,4 @@
-/*! dijon.js ~ created by Dylan Waits ~ https://github.com/waits/dijon ~ updated 2015-04-14 */
+/*! unwrapped.js ~ v0.0.5 ~ created by Dylan Waits ~ https://github.com/waits/unwrapped */
 
 function ajax(method, url, data, callback) {
 	method = method.toUpperCase();
