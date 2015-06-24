@@ -1,9 +1,12 @@
 function stringifyForm(form) {
 	var output = '';
-	var inputs = form.getTag('select');
-	inputs.each(function() {
-		output += this.name + '=' + encodeURIComponent(this.value) + '&';
-	});
+	var tags = ['input', 'select'];
+	for (var t=0; t<tags.length; t++) {
+		var inputs = form.getTag(tags[t]);
+		inputs.each(function() {
+			output += this.name + '=' + encodeURIComponent(this.value) + '&';
+		});
+	}
 	return output;
 }
 
