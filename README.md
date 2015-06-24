@@ -20,7 +20,7 @@ getTag(name) // returns NodeList
 is(object) // returns shortened class name
 ```
 
-### DOM Methods
+### DOM
 ```javascript
 Document.ready(callback) // adds event listener to document object for load and page:ready, and calls function immediately
 Element.getClass(name) // returns NodeList
@@ -39,7 +39,7 @@ Element.siblings() // returns NodeList of siblings excluding self
 Element.index() // returns index of element in its parent container
 ```
 
-### AJAX Functions
+### AJAX
 ```javascript
 ajax(method, url, data, callback) // sends an XMLHttpRequest with the data urlencoded for GET requests or serialized into JSON otherwise
 ```

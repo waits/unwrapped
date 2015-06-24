@@ -25,7 +25,7 @@ function ajax(method, url, data, callback) {
 function is(object) {
 	return Object.prototype.toString.call(object).slice(8, -1);
 }
-function get(id) {return document.getElementById(id) || document.createDocumentFragment().childNodes;}
+function get(id) {return document.getElementById(id);}
 function getClass(name) {return document.getElementsByClassName(name);}
 function getName(name) {return document.getElementsByName(name);}
 function getTag(name) {return document.getElementsByTagName(name);}
@@ -71,7 +71,6 @@ function create(type, child, options) {
 }
 
 Document.prototype.ready = function(callback) {
-	callback(this);
 	document.addEventListener('load', callback);
 	document.addEventListener('page:load', callback);
 };
@@ -80,8 +79,18 @@ Element.prototype.getClass = function(name) {
 	return this.getElementsByClassName(name);
 };
 
-Element.prototype.getName = function(name) {
-	return this.getElementsByName(name);
+Element.prototype.getName = function(arg) {
+    var returnList = [];
+    (function(start) {
+        for (var child in start) {
+            if (start[child].nodeType != 1) continue;
+            if (start[child].name == arg) returnList.push(start[child]);
+            if (start[child].childNodes.length > 0) {
+                arguments.callee(start[child].childNodes);
+            }
+        }
+    })(this.childNodes);
+    return returnList;
 };
 
 Element.prototype.getTag = function(name) {
