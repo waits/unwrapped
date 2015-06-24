@@ -1,4 +1,4 @@
-/*! unwrapped.js ~ v0.0.5 ~ created by Dylan Waits ~ https://github.com/waits/unwrapped */
+/*! unwrapped.js ~ v0.0.6 ~ created by Dylan Waits ~ https://github.com/waits/unwrapped */
 
 function stringifyForm(form) {
 	var output = '';
