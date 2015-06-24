@@ -1,3 +1,12 @@
+function stringifyForm(form) {
+	var output = '';
+	var inputs = form.getTag('select');
+	inputs.each(function() {
+		output += this.name + '=' + encodeURIComponent(this.value) + '&';
+	});
+	return output;
+}
+
 function ajax(method, url, data, callback) {
 	method = method.toUpperCase();
 	var request = new XMLHttpRequest();
@@ -7,7 +16,8 @@ function ajax(method, url, data, callback) {
 			for (var p in data) url += p + '=' + encodeURIComponent(data[p]) + '&';
 		}
 		else {
-			data = JSON.stringify(data);
+			if (is(data) == "Object")
+				data = JSON.stringify(data);
 		}
 	}
 	request.open(method, url, true);
@@ -16,7 +26,7 @@ function ajax(method, url, data, callback) {
 		request.send();
 	}
 	else {
-		request.setRequestHeader("Content-Type", "application/json");
+		request.setRequestHeader("Content-Type", is(data) == "Object" ? "application/json" : "application/x-www-form-urlencoded");
 		request.send(data);
 	}
 }
