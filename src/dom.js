@@ -98,6 +98,16 @@ HTMLCollection.prototype.last = NodeList.prototype.last = function() {
 	return this[this.length-1] || null;
 };
 
+HTMLCollection.prototype.remove = NodeList.prototype.remove = function() {
+	var arr = Array.prototype.slice.call(this);
+	for (var i in arr) {
+		var el = arr[i];
+		if (el.nodeType == 1) {
+			el.remove();
+		}
+	}
+};
+
 Element.prototype.empty = function() {
 	this.innerHTML = '';
 	return this;

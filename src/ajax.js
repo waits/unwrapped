@@ -3,9 +3,12 @@ function stringifyForm(form) {
 	var tags = ['input', 'select'];
 	for (var t=0; t<tags.length; t++) {
 		var inputs = form.getTag(tags[t]);
-		inputs.each(function() {
-			output += this.name + '=' + encodeURIComponent(this.value) + '&';
-		});
+		for (var i in inputs) {
+			var input = inputs[i];
+			if (input.nodeType == 1) {
+				output += input.name + '=' + encodeURIComponent(input.value) + '&';
+			}
+		}
 	}
 	return output;
 }

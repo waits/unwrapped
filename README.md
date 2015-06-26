@@ -29,6 +29,7 @@ Element.getTag(name) // returns NodeList
 Element.empty() // clears innerHTML and returns self
 NodeList.first() // first Element or null
 NodeList.last() // last Element or null
+NodeList.remove() // removes all elements in NodeList from the DOM
 Document.on(event, callback) // adds event listener to document object
 Element.on(event, callback) // adds event listener to element
 NodeList.on(event, callback) // adds event listener to each element
@@ -42,4 +43,5 @@ Element.index() // returns index of element in its parent container
 ### AJAX
 ```javascript
 ajax(method, url, data, callback) // sends an XMLHttpRequest with the data urlencoded for GET requests or serialized into JSON otherwise
+stringifyForm(formElement) // returns String of parameters and values
 ```

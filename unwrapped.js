@@ -1,13 +1,16 @@
-/*! unwrapped.js ~ v0.0.6 ~ created by Dylan Waits ~ https://github.com/waits/unwrapped */
+/*! unwrapped.js ~ v0.0.7 ~ created by Dylan Waits ~ https://github.com/waits/unwrapped */
 
 function stringifyForm(form) {
 	var output = '';
 	var tags = ['input', 'select'];
 	for (var t=0; t<tags.length; t++) {
 		var inputs = form.getTag(tags[t]);
-		inputs.each(function() {
-			output += this.name + '=' + encodeURIComponent(this.value) + '&';
-		});
+		for (var i in inputs) {
+			var input = inputs[i];
+			if (input.nodeType == 1) {
+				output += input.name + '=' + encodeURIComponent(input.value) + '&';
+			}
+		}
 	}
 	return output;
 }
@@ -136,6 +139,16 @@ HTMLCollection.prototype.first = NodeList.prototype.first = function() {
 };
 HTMLCollection.prototype.last = NodeList.prototype.last = function() {
 	return this[this.length-1] || null;
+};
+
+HTMLCollection.prototype.remove = NodeList.prototype.remove = function() {
+	var arr = Array.prototype.slice.call(this);
+	for (var i in arr) {
+		var el = arr[i];
+		if (el.nodeType == 1) {
+			el.remove();
+		}
+	}
 };
 
 Element.prototype.empty = function() {
