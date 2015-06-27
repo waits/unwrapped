@@ -8,7 +8,12 @@ function stringifyForm(form) {
 		for (var i in inputs) {
 			var input = inputs[i];
 			if (input.nodeType == 1) {
-				output += input.name + '=' + encodeURIComponent(input.value) + '&';
+				if (input.type == 'radio') {
+					if (input.checked)
+						output += input.name + '=' + encodeURIComponent(input.value) + '&';
+				}
+				else
+					output += input.name + '=' + encodeURIComponent(input.value) + '&';
 			}
 		}
 	}
