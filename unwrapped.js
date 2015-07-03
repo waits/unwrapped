@@ -1,4 +1,4 @@
-/*! unwrapped.js ~ v0.0.7 ~ created by Dylan Waits ~ https://github.com/waits/unwrapped */
+/*! unwrapped.js ~ v0.0.8 ~ created by Dylan Waits ~ https://github.com/waits/unwrapped */
 
 function stringifyForm(form) {
 	var output = '';
@@ -67,7 +67,7 @@ function create(type, child, options) {
 				}
 			}
 			else {
-				el[k] = options[k];
+				el.setAttribute(k, options[k]);
 			}
 		}
 	}

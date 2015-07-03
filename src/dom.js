@@ -19,7 +19,7 @@ function create(type, child, options) {
 				}
 			}
 			else {
-				el[k] = options[k];
+				el.setAttribute(k, options[k]);
 			}
 		}
 	}

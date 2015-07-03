@@ -4,6 +4,19 @@
 		<meta charset="utf-8">
 		<title>Unwrapped Demo</title>
 		<script src="unwrapped.js"></script>
+		<script>
+			function run(n) {
+				var c = 0;
+				var start = performance.now();
+				var now = performance.now();
+				while (now - start <= n) {
+					var e = get('form');
+					c++;
+					now = performance.now();
+				}
+				console.log(c);
+			}
+		</script>
 	</head>
 	<body>
 		<form id="form">
