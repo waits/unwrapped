@@ -23,15 +23,9 @@ function stringifyForm(form) {
 function ajax(method, url, data, callback) {
 	method = method.toUpperCase();
 	var request = new XMLHttpRequest();
-	if (data) {
-		if (method == 'GET' && data) {
-			url += '?';
-			for (var p in data) url += p + '=' + encodeURIComponent(data[p]) + '&';
-		}
-		else {
-			if (is(data) == "Object")
-				data = JSON.stringify(data);
-		}
+	if (data && method == 'GET') {
+		url += '?';
+		for (var p in data) url += p + '=' + encodeURIComponent(data[p]) + '&';
 	}
 	request.open(method, url, true);
 	if (callback) request.onload = function() {callback.call(this);};
@@ -39,8 +33,14 @@ function ajax(method, url, data, callback) {
 		request.send();
 	}
 	else {
-		request.setRequestHeader("Content-Type", is(data) == "Object" ? "application/json" : "application/x-www-form-urlencoded");
-		request.send(data);
+		if (is(data) == 'Object') {
+			request.setRequestHeader("Content-Type", "application/json");
+			request.send(JSON.stringify(data));
+		}
+		else {
+			request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			request.send(data);
+		}
 	}
 }
 function is(object) {
