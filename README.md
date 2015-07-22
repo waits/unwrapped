@@ -1,13 +1,12 @@
 unwrapped.js
-======
+============
 
 Simple performance-focused Javascript DOM extensions and utilities. For those times when jQuery is too much.
 
 ### Browser Support
-Chrome 38+
-Firefox 33+
+Chrome 42+
+Firefox 38+
 Internet Explorer 11+
-Opera 25+
 Safari 8+
 
 ### Helper Functions
@@ -43,5 +42,5 @@ Element.index() // returns index of element in its parent container
 ### AJAX
 ```javascript
 ajax(method, url, data, callback) // sends an XMLHttpRequest with the data urlencoded for GET requests or serialized into JSON otherwise
-stringifyForm(formElement) // returns String of parameters and values
+HTMLFormElement.stringify() // returns url-encoded string of parameters and values
 ```
