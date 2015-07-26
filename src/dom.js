@@ -103,15 +103,15 @@ HTMLCollection.prototype.remove = NodeList.prototype.remove = function() {
 	}
 };
 
-Element.prototype.closest = function(name) {
-	var el = this;
-	do {
-		if (el.nodeType === 1 && el.classList.contains(name)) {
-			return el;
-		}
-	} while (el = el.parentNode);
-
-	return null;
+Element.prototype.closest = function(options) {
+	if (options.class && !this.classList.contains(options.class) ||
+		options.name && this.name != options.name ||
+		options.tag && this.tagName != options.tag.toUpperCase()) {
+			if (this.parentNode.nodeType === 1) {return this.parentNode.closest(options);}
+			else {return null;}
+	} else {
+		return this;
+	}
 };
 
 Element.prototype.next = function() {return this.nextElementSibling;};
