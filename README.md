@@ -11,25 +11,25 @@ Safari 8+
 
 ### Helper Functions
 ```javascript
-create(type[, content, attributes]) // creates an element of the given type, optionally with content as a String, Array of Nodes, or NodeList, and provided attributes
+create(String type[, (String||Array||NodeList) content][, Object attrs]) // creates an element of the given type, optionally with content as a String, Array, or NodeList, and provided attributes
 id(id) // returns Element
-classes(className) // returns NodeList
-names(name) // returns NodeList
-tags(tag) // returns NodeList
-typeOf(object) // returns shortened class name
+classes(String klass) // returns NodeList
+names(String name) // returns NodeList
+tags(String tag) // returns NodeList
+typeOf(Object obj) // returns shortened class name
 ```
 
 ### DOM
 ```javascript
-Element.classes(className) // returns NodeList
-Element.names(name) // returns NodeList
-Element.tags(tag) // returns NodeList
+Element.classes(String klass) // returns NodeList
+Element.names(String name) // returns NodeList
+Element.tags(String tag) // returns NodeList
 NodeList.first() // first Element or null
 NodeList.last() // last Element or null
 NodeList.remove() // removes all elements in NodeList from the DOM
-Document.on(event, callback) // adds event listener to document object
-Element.on(event, callback) // adds event listener to element
-NodeList.on(event, callback) // adds event listener to each element
+Document.on(String event, Function callback) // adds event listener to document object
+Element.on(String event, Function callback) // adds event listener to element
+NodeList.on(String event, Function callback) // adds event listener to each element
 Element.closest({class: String, name: String, tag: String}) // returns nearest parent matching provided selectors
 Element.next() // returns next sibling or null
 Element.prev() // returns previous sibling or null
@@ -39,6 +39,6 @@ Element.index() // returns index of element in its parent container
 
 ### AJAX
 ```javascript
-ajax(method, url, data, callback) // sends an XMLHttpRequest with the data urlencoded for GET requests or serialized into JSON otherwise
+ajax(String method, String url[, Object data][, Function callback]) // sends an XMLHttpRequest with the data urlencoded for GET requests or serialized into JSON otherwise
 HTMLFormElement.stringify() // returns url-encoded string of parameters and values
 ```
