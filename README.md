@@ -12,18 +12,18 @@ Safari 8+
 ### Helper Functions
 ```javascript
 create(type[, content, attributes]) // creates an element of the given type, optionally with content as a String, Array of Nodes, or NodeList, and provided attributes
-get(id) // returns Element
-getClass(name) // returns NodeList
-getName(name) // returns NodeList
-getTag(name) // returns NodeList
+id(id) // returns Element
+classes(name) // returns NodeList
+names(name) // returns NodeList
+tags(name) // returns NodeList
 typeOf(object) // returns shortened class name
 ```
 
 ### DOM
 ```javascript
-Element.getClass(name) // returns NodeList
-Element.getName(name) // returns NodeList
-Element.getTag(name) // returns NodeList
+Element.classes(name) // returns NodeList
+Element.names(name) // returns NodeList
+Element.tags(name) // returns NodeList
 NodeList.first() // first Element or null
 NodeList.last() // last Element or null
 NodeList.remove() // removes all elements in NodeList from the DOM

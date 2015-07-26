@@ -1,5 +1,7 @@
 /*! unwrapped.js ~ v0.1.0-alpha ~ created by Dylan Waits ~ https://github.com/waits/unwrapped */
 
+'use strict';
+
 function ajax(method, url, data, callback) {
 	method = method.toUpperCase();
 	var request = new XMLHttpRequest();
@@ -28,7 +30,7 @@ HTMLFormElement.prototype.stringify = function() {
 	var values = [];
 	var tags = ['input', 'select'];
 	for (var t=0; t<tags.length; t++) {
-		var inputs = this.getTag(tags[t]);
+		var inputs = this.tags(tags[t]);
 		for (var i in inputs) {
 			var input = inputs[i];
 			if (input.nodeType === 1) {
@@ -46,10 +48,10 @@ HTMLFormElement.prototype.stringify = function() {
 function typeOf(object) {
 	return Object.prototype.toString.call(object).slice(8, -1);
 }
-function get(id) {return document.getElementById(id);}
-function getClass(name) {return document.getElementsByClassName(name);}
-function getName(name) {return document.getElementsByName(name);}
-function getTag(name) {return document.getElementsByTagName(name);}
+function id(str) {return document.getElementById(str);}
+function classes(str) {return document.getElementsByClassName(str);}
+function names(str) {return document.getElementsByName(str);}
+function tags(str) {return document.getElementsByTagName(str);}
 
 function create(type, child, options) {
 	var el = document.createElement(type);
@@ -91,11 +93,11 @@ function create(type, child, options) {
 	return el;
 }
 
-Element.prototype.getClass = function(name) {
+Element.prototype.classes = function(name) {
 	return this.getElementsByClassName(name);
 };
 
-Element.prototype.getName = function(arg) {
+Element.prototype.names = function(arg) {
 	var returnList = [];
 	(function(start) {
 		for (var child in start) {
@@ -109,7 +111,7 @@ Element.prototype.getName = function(arg) {
 	return returnList;
 };
 
-Element.prototype.getTag = function(name) {
+Element.prototype.tags = function(name) {
 	return this.getElementsByTagName(name);
 };
 
@@ -154,7 +156,7 @@ HTMLCollection.prototype.remove = NodeList.prototype.remove = function() {
 Element.prototype.closest = function(name) {
 	var el = this;
 	do {
-		if (el.classList && el.classList.contains(name)) {
+		if (el.nodeType === 1 && el.classList.contains(name)) {
 			return el;
 		}
 	} while (el = el.parentNode);

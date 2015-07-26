@@ -1,7 +1,7 @@
-function get(id) {return document.getElementById(id);}
-function getClass(name) {return document.getElementsByClassName(name);}
-function getName(name) {return document.getElementsByName(name);}
-function getTag(name) {return document.getElementsByTagName(name);}
+function id(str) {return document.getElementById(str);}
+function classes(str) {return document.getElementsByClassName(str);}
+function names(str) {return document.getElementsByName(str);}
+function tags(str) {return document.getElementsByTagName(str);}
 
 function create(type, child, options) {
 	var el = document.createElement(type);
@@ -43,11 +43,11 @@ function create(type, child, options) {
 	return el;
 }
 
-Element.prototype.getClass = function(name) {
+Element.prototype.classes = function(name) {
 	return this.getElementsByClassName(name);
 };
 
-Element.prototype.getName = function(arg) {
+Element.prototype.names = function(arg) {
 	var returnList = [];
 	(function(start) {
 		for (var child in start) {
@@ -61,7 +61,7 @@ Element.prototype.getName = function(arg) {
 	return returnList;
 };
 
-Element.prototype.getTag = function(name) {
+Element.prototype.tags = function(name) {
 	return this.getElementsByTagName(name);
 };
 
@@ -106,7 +106,7 @@ HTMLCollection.prototype.remove = NodeList.prototype.remove = function() {
 Element.prototype.closest = function(name) {
 	var el = this;
 	do {
-		if (el.classList && el.classList.contains(name)) {
+		if (el.nodeType === 1 && el.classList.contains(name)) {
 			return el;
 		}
 	} while (el = el.parentNode);
