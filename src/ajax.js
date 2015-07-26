@@ -1,17 +1,17 @@
 function ajax(method, url, data, callback) {
 	method = method.toUpperCase();
 	var request = new XMLHttpRequest();
-	if (data && method == 'GET') {
+	if (data && method === 'GET') {
 		url += '?';
 		for (var p in data) url += p + '=' + encodeURIComponent(data[p]) + '&';
 	}
 	request.open(method, url, true);
 	if (callback) request.onload = function() {callback.call(this);};
-	if (method == 'GET' || !data) {
+	if (method === 'GET' || !data) {
 		request.send();
 	}
 	else {
-		if (is(data) == 'Object') {
+		if (typeOf(data) === 'Object') {
 			request.setRequestHeader("Content-Type", "application/json");
 			request.send(JSON.stringify(data));
 		}
@@ -29,8 +29,8 @@ HTMLFormElement.prototype.stringify = function() {
 		var inputs = this.getTag(tags[t]);
 		for (var i in inputs) {
 			var input = inputs[i];
-			if (input.nodeType == 1) {
-				if (input.type == 'radio') {
+			if (input.nodeType === 1) {
+				if (input.type === 'radio') {
 					if (input.checked)
 						values.push(input.name + '=' + encodeURIComponent(input.value));
 				}

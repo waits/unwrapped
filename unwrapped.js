@@ -3,17 +3,17 @@
 function ajax(method, url, data, callback) {
 	method = method.toUpperCase();
 	var request = new XMLHttpRequest();
-	if (data && method == 'GET') {
+	if (data && method === 'GET') {
 		url += '?';
 		for (var p in data) url += p + '=' + encodeURIComponent(data[p]) + '&';
 	}
 	request.open(method, url, true);
 	if (callback) request.onload = function() {callback.call(this);};
-	if (method == 'GET' || !data) {
+	if (method === 'GET' || !data) {
 		request.send();
 	}
 	else {
-		if (is(data) == 'Object') {
+		if (typeOf(data) === 'Object') {
 			request.setRequestHeader("Content-Type", "application/json");
 			request.send(JSON.stringify(data));
 		}
@@ -31,8 +31,8 @@ HTMLFormElement.prototype.stringify = function() {
 		var inputs = this.getTag(tags[t]);
 		for (var i in inputs) {
 			var input = inputs[i];
-			if (input.nodeType == 1) {
-				if (input.type == 'radio') {
+			if (input.nodeType === 1) {
+				if (input.type === 'radio') {
 					if (input.checked)
 						values.push(input.name + '=' + encodeURIComponent(input.value));
 				}
@@ -43,7 +43,7 @@ HTMLFormElement.prototype.stringify = function() {
 	}
 	return values.join('&');
 };
-function is(object) {
+function typeOf(object) {
 	return Object.prototype.toString.call(object).slice(8, -1);
 }
 function get(id) {return document.getElementById(id);}
@@ -56,12 +56,12 @@ function create(type, child, options) {
 	
 	if (options) {
 		for (var k in options) {
-			if (k == 'style') {
+			if (k === 'style') {
 				for (var s in options.style) {
 					el.style[s] = options.style[s];
 				}
 			}
-			else if (k == 'data') {
+			else if (k === 'data') {
 				for (var d in options.data) {
 					el.dataset[d] = options.data[d];
 				}
@@ -72,7 +72,7 @@ function create(type, child, options) {
 		}
 	}
 	
-	switch (is(child)) {
+	switch (typeOf(child)) {
 		case "Null":
 		case "Undefined":
 			break;
@@ -91,27 +91,22 @@ function create(type, child, options) {
 	return el;
 }
 
-Document.prototype.ready = function(callback) {
-	document.addEventListener('load', callback);
-	document.addEventListener('page:load', callback);
-};
-
 Element.prototype.getClass = function(name) {
 	return this.getElementsByClassName(name);
 };
 
 Element.prototype.getName = function(arg) {
-    var returnList = [];
-    (function(start) {
-        for (var child in start) {
-            if (start[child].nodeType != 1) continue;
-            if (start[child].name == arg) returnList.push(start[child]);
-            if (start[child].childNodes.length > 0) {
-                arguments.callee(start[child].childNodes);
-            }
-        }
-    })(this.childNodes);
-    return returnList;
+	var returnList = [];
+	(function(start) {
+		for (var child in start) {
+			if (start[child].nodeType !== 1) continue;
+			if (start[child].name === arg) returnList.push(start[child]);
+			if (start[child].childNodes.length > 0) {
+				arguments.callee(start[child].childNodes);
+			}
+		}
+	})(this.childNodes);
+	return returnList;
 };
 
 Element.prototype.getTag = function(name) {
@@ -127,7 +122,7 @@ Document.prototype.on = Element.prototype.on = function(event, callback) {
 HTMLCollection.prototype.on = NodeList.prototype.on = function(event, callback) {
 	for (var i in this) {
 		var node = this[i];
-		if (node.nodeType == 1) {
+		if (node.nodeType === 1) {
 			node.on(event, callback);
 		}
 	}
@@ -150,26 +145,21 @@ HTMLCollection.prototype.remove = NodeList.prototype.remove = function() {
 	var arr = Array.prototype.slice.call(this);
 	for (var i in arr) {
 		var el = arr[i];
-		if (el.nodeType == 1) {
+		if (el.nodeType === 1) {
 			el.remove();
 		}
 	}
 };
 
-Element.prototype.empty = function() {
-	this.innerHTML = '';
-	return this;
-};
-
 Element.prototype.closest = function(name) {
 	var el = this;
 	do {
-    if (el.classList && el.classList.contains(name)) {
-      return el;
-    }
-  } while (el = el.parentNode);
+		if (el.classList && el.classList.contains(name)) {
+			return el;
+		}
+	} while (el = el.parentNode);
 
-  return null;
+	return null;
 };
 
 Element.prototype.next = function() {return this.nextElementSibling;};
@@ -177,7 +167,7 @@ Element.prototype.prev = function() {return this.previousElementSibling;};
 Element.prototype.siblings = function() {
 	var el = this;
 	return Array.prototype.filter.call(this.parentNode.children, function(child) {
-	  return child !== el;
+		return child !== el;
 	});
 };
 

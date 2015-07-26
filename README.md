@@ -16,16 +16,14 @@ get(id) // returns Element
 getClass(name) // returns NodeList
 getName(name) // returns NodeList
 getTag(name) // returns NodeList
-is(object) // returns shortened class name
+typeOf(object) // returns shortened class name
 ```
 
 ### DOM
 ```javascript
-Document.ready(callback) // adds event listener to document object for load and page:ready, and calls function immediately
 Element.getClass(name) // returns NodeList
 Element.getName(name) // returns NodeList
 Element.getTag(name) // returns NodeList
-Element.empty() // clears innerHTML and returns self
 NodeList.first() // first Element or null
 NodeList.last() // last Element or null
 NodeList.remove() // removes all elements in NodeList from the DOM
