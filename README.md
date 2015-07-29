@@ -37,8 +37,11 @@ Element.siblings() // returns NodeList of siblings excluding self
 Element.index() // returns index of element in its parent container
 ```
 
-### AJAX
+### HTTP
 ```javascript
-ajax(String method, String url[, Object data][, Function callback]) // sends an XMLHttpRequest with the data urlencoded for GET requests or serialized into JSON otherwise
+HTTP.get(String url[, Object data][, Function callback]) // sends a 'GET' XMLHttpRequest with data urlencoded and appended to the URL
+HTTP.post(String url[, Object data][, Function callback]) // sends a 'POST' XMLHttpRequest with data urlencoded in the body
+HTTP.patch(String url[, Object data][, Function callback]) // sends a 'PATCH' XMLHttpRequest with data urlencoded in the body
+HTTP.delete(String url[, Function callback]) // sends a 'DELETE' XMLHttpRequest
 HTMLFormElement.stringify() // returns url-encoded string of parameters and values
 ```

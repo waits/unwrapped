@@ -5,7 +5,7 @@ function tags(str) {return document.getElementsByTagName(str);}
 
 function create(type, child, options) {
 	var el = document.createElement(type);
-	
+
 	if (options) {
 		for (var k in options) {
 			if (k === 'style') {
@@ -23,7 +23,7 @@ function create(type, child, options) {
 			}
 		}
 	}
-	
+
 	switch (typeOf(child)) {
 		case "Null":
 		case "Undefined":
@@ -39,7 +39,7 @@ function create(type, child, options) {
 		default:
 			el.appendChild(child);
 	}
-	
+
 	return el;
 }
 
