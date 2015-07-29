@@ -135,7 +135,7 @@ Element.prototype.index = function() {
 
 HTMLFormElement.prototype.stringify = function() {
 	var values = [];
-	var tags = ['input', 'select'];
+	var tags = ['input', 'select', 'textarea'];
 	for (var t=0; t<tags.length; t++) {
 		var inputs = this.tags(tags[t]);
 		for (var i in inputs) {
