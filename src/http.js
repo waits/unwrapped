@@ -1,17 +1,19 @@
 window.HTTP = (function() {
+	'use strict';
+
 	var HTTP = {};
 
 	function sendEmptyRequest(method, url, callback) {
 		var request = new XMLHttpRequest();
 		request.open(method, url, true);
-		if (callback) request.onload = callback;
+		if (callback) {request.onload = callback;}
 		request.send();
 	}
 
 	function sendDataRequest(method, url, data, callback) {
 		var request = new XMLHttpRequest();
 		request.open('method', url, true);
-		if (callback) request.onload = callback;
+		if (callback) {request.onload = callback;}
 		if (typeOf(data) === 'Object') {
 			request.setRequestHeader("Content-Type", "application/json");
 			request.send(JSON.stringify(data));
@@ -25,7 +27,9 @@ window.HTTP = (function() {
 	HTTP.get = function(url, data, callback) {
 		if (data) {
 			url += '?';
-			for (var p in data) url += p + '=' + encodeURIComponent(data[p]) + '&';
+			for (var p in data) {
+				if (data.hasOwnProperty(p)) {url += p + '=' + encodeURIComponent(data[p]) + '&';}
+			}
 		}
 		sendEmptyRequest('GET', url, data, callback);
 	};
