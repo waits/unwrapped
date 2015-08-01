@@ -3,7 +3,7 @@ function classes(str) {return document.getElementsByClassName(str);}
 function names(str) {return document.getElementsByName(str);}
 function tags(str) {return document.getElementsByTagName(str);}
 
-function create(type, child, options) {
+Element.create = function(type, child, options) {
 	var el = document.createElement(type);
 
 	if (options) {
@@ -41,7 +41,7 @@ function create(type, child, options) {
 	}
 
 	return el;
-}
+};
 
 Element.prototype.classes = function(name) {
 	return this.getElementsByClassName(name);

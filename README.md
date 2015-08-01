@@ -11,11 +11,11 @@ Safari 8+
 
 ### Helper Functions
 ```javascript
-create(String type[, (String||Array||NodeList) content][, Object attrs]) // creates an element of the given type, optionally with content as a String, Array, or NodeList, and provided attributes
 id(id) // returns Element
 classes(String klass) // returns NodeList
 names(String name) // returns NodeList
 tags(String tag) // returns NodeList
+Element.create(String type[, (String||Array||NodeList) content][, Object attrs]) // creates an element of the given type, optionally with content as a String, Array, or NodeList, and provided attributes
 typeOf(Object obj) // returns shortened class name
 ```
 
