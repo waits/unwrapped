@@ -156,7 +156,10 @@
 			var inputs = this.tags(tags[t]);
 			for (var i in inputs) {
 				if (inputs.hasOwnProperty(i) && inputs[i].nodeType === 1) {
-					if (inputs[i].type === 'radio') {
+    				if (inputs[i].type === 'checkbox') {
+        				if (inputs[i].checked) {values.push(inputs[i].name + '=' + encodeURIComponent(inputs[i].value));}
+    				}
+					else if (inputs[i].type === 'radio') {
 						if (inputs[i].checked) {values.push(inputs[i].name + '=' + encodeURIComponent(inputs[i].value));}
 					}
 					else {values.push(inputs[i].name + '=' + encodeURIComponent(inputs[i].value));}
