@@ -62,12 +62,12 @@
 
 	Element.prototype.names = function(arg) {
 		var returnList = [];
-		(function(start) {
+		(function loop(start) {
 			for (var child in start) {
-				if (start.hasOwnProperty(child) && start[child].nodeType !== 1) {
+				if (start.hasOwnProperty(child) && start[child].nodeType === 1) {
 					if (start[child].name === arg) {returnList.push(start[child]);}
 					if (start[child].childNodes.length > 0) {
-						this.names(start[child].childNodes);
+						loop(start[child].childNodes);
 					}
 				}
 			}
@@ -184,7 +184,7 @@ window.HTTP = (function() {
 
 	function sendDataRequest(method, url, data, callback) {
 		var request = new XMLHttpRequest();
-		request.open('method', url, true);
+		request.open(method, url, true);
 		if (callback) {request.onload = callback;}
 		if (typeOf(data) === 'Object') {
 			request.setRequestHeader("Content-Type", "application/json");

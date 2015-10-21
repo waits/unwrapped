@@ -12,7 +12,7 @@ window.HTTP = (function() {
 
 	function sendDataRequest(method, url, data, callback) {
 		var request = new XMLHttpRequest();
-		request.open('method', url, true);
+		request.open(method, url, true);
 		if (callback) {request.onload = callback;}
 		if (typeOf(data) === 'Object') {
 			request.setRequestHeader("Content-Type", "application/json");
